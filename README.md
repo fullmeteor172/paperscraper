@@ -1,6 +1,6 @@
-# PaperScraper
+# [PubMed-Paper Scraper](https://test.pypi.org/project/pubmed-paperscraper/0.1.0/)
 
-A Python CLI tool and library for fetching research papers with non-academic authors from PubMed. This tool identifies papers where at least one author is affiliated with pharmaceutical companies, biotech firms, or other commercial organizations.
+A Python CLI tool and library for fetching **research papers with non-academic authors** from PubMed. This tool identifies papers where at least one author is affiliated with pharmaceutical companies, biotech firms, or other commercial organizations.
 
 ## Features
 
@@ -277,7 +277,9 @@ The tool includes robust error handling for:
 ## Development Tools Used
 
 This project was built with assistance from:
-- **Claude AI**: Code generation, structure design, and documentation
+- **Claude AI**: Code Refactoring, Documentation
+- **GitHub Co-Pilot**: AI code completion
+- **Chat GPT**: Debug Aid
 - **Poetry**: Dependency management and packaging
 - **Rich**: Beautiful console output and progress bars
 - **httpx**: Modern async HTTP client

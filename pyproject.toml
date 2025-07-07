@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "paperscraper"
-version = "0.1.0"
+name = "pubmed-paperscraper"
+version = "0.1.1"
 description = "CLI tool to fetch research papers with non-academic authors from PubMed"
 authors = ["Dhruv Jha <dhruvjha2002@gmail.com>"]
 readme = "README.md"
