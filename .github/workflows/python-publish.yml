@@ -20,8 +20,8 @@ jobs:
 
       - name: Build package
         run: |
-          rm -rf dist/ build/
-          poetry install --no-dev
+          rm -rf dist/
+          poetry install
           poetry build
 
       - name: Upload to Test PyPI
