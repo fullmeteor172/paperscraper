@@ -1,32 +1,32 @@
+# .github/workflows/publish-testpypi.yml
 name: Publish to Test PyPI
 
 on:
   push:
-    tags:
-      - 'v*'  # v0.1.1, etc.
+    branches: [main]          # run on every commit to main
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      - name: Install Poetry
-        run: pip install poetry
+      - name: Install Poetry & Twine
+        run: pip install poetry twine
 
-      - name: Build
+      - name: Build package
         run: |
+          rm -rf dist/ build/
           poetry install --no-dev
           poetry build
 
-      - name: Publish to PyPI
+      - name: Upload to Test PyPI
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TEST_API_TOKEN }}
         run: |
-          pip install twine
-          twine upload dist/*
+          twine upload --repository-url https://test.pypi.org/legacy/ dist/*
