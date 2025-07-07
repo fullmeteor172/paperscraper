@@ -1,0 +1,32 @@
+name: Publish to Test PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'  # v0.1.1, etc.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Build
+        run: |
+          poetry install --no-dev
+          poetry build
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_API_TOKEN }}
+        run: |
+          pip install twine
+          twine upload dist/*
